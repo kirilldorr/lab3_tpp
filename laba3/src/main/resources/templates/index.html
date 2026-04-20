@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lab 3 Secure JDBC</title>
+</head>
+<body>
+<h1>Secure Command Runner</h1>
+
+<form action="/execute" method="post">
+        <textarea name="sql" rows="5" cols="80"
+                  placeholder="Введіть команду"></textarea><br>
+    <button type="submit">Виконати</button>
+</form>
+
+<div th:if="${error}" style="color: red;">
+    <h3>Помилка:</h3> <p th:text="${error}"></p>
+</div>
+
+<div th:if="${message}" style="color: blue; font-weight: bold;">
+    <h3>Результат:</h3>
+    <p th:text="${message}"></p>
+</div>
+
+<table border="1" th:if="${headers}">
+    <thead>
+    <tr><th th:each="header : ${headers}" th:text="${header}"></th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="row : ${rows}">
+        <td th:each="cell : ${row}" th:text="${cell}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

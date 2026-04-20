@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+<h1>Калькулятор</h1>
+<form action="/" method="post">
+    <label>Введіть вираз (напр. 2+2*2):</label><br/>
+    <input type="text" name="expression" required/><br/><br/>
+    <button type="submit">Порахувати</button>
+</form>
+
+<div th:if="${result != null}">
+    <h2>Результат: <span th:text="${result}"></span></h2>
+</div>
+<div th:if="${error != null}">
+    <h2 style="color:red;">Помилка: <span th:text="${error}"></span></h2>
+</div>
+</body>
+</html>
