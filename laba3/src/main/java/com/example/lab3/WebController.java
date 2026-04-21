@@ -23,8 +23,7 @@ public class WebController {
         model.addAttribute("lastQuery", sql);
 
         /* // ==========================================
-        // БЛОК ДЛЯ ЧАСТИНИ 1: Вразливий до SQL Injection код
-        // Розкоментуй цей блок і закоментуй виклик secureCommandService для відео з ін'єкцією
+        // FOR TEST WITH SQL INJECTION (NOT SECURE)
         // ==========================================
         try (java.sql.Connection conn = DatabaseConnection.getConnection();
              java.sql.Statement stmt = conn.createStatement()) {
@@ -53,7 +52,7 @@ public class WebController {
         */
 
         // ==========================================
-        // БЛОК ДЛЯ ЧАСТИНИ 2: Захищений парсер команд
+        // FOR SECURE COMMAND PARSER
         // ==========================================
         String resultMessage = secureCommandService.executeSecureCommand(sql);
         model.addAttribute("message", resultMessage);
